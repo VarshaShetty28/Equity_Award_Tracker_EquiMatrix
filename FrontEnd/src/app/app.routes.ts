@@ -4,6 +4,7 @@ import { AwardsComponent } from './features/admin/awards/awards.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { DashboardComponent } from './features/admin/dashboard/dashboard.component';
 import { EmployeeComponent } from './features/admin/employees/employees.component';
+import { ReportsComponent } from './features/admin/reports/reports.component';
 import { ExerciseRequestComponent } from './features/admin/exercise-request/exercise-request.component';
 import { NotificationsComponent } from './features/admin/notifications/notifications.component';
 
@@ -17,9 +18,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent }, // temporary
       { path: 'awards', component: AwardsComponent },
-      { path: 'employees', component: EmployeeComponent },
-      { path: 'exercise', component: ExerciseRequestComponent },
-      { path: 'notifications', component: NotificationsComponent }
+      { path: 'employees', component: EmployeeComponent }
     ]
   }
 
