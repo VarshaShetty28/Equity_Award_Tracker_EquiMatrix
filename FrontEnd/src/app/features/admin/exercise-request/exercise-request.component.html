@@ -1,1 +1,76 @@
-<p>exercise-request works!</p>
+<div class="p-6">
+
+  <!-- HEADER -->
+  <div class="flex justify-between items-center mb-6">
+    <div>
+      <h1 class="text-2xl font-bold">Manage employee share exercise requests</h1>
+    </div>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="flex items-center gap-4 mb-8">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Search"
+      class="flex-1 max-w-md p-3 rounded text-black shadow-lg border border-gray-300"
+    />
+
+    <button 
+      (click)="onSearch()"
+      class="bg-blue-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-600">
+      Search
+    </button>
+  </div>
+
+  <!-- TABLE CARD -->
+  <div class="bg-white text-black p-6 rounded">
+
+    <h2 class="text-xl font-semibold mb-4">Existing Exercise Requests</h2>
+
+    <table class="w-full">
+
+      <!-- HEAD -->
+      <thead class="bg-[#0B1437] text-white">
+        <tr>
+          <th class="p-3 text-left">Request Id</th>
+          <th class="p-3 text-left">Employee Id</th>
+          <th class="p-3 text-left">Employee Name</th>
+          <th class="p-3 text-left">No Of Shares</th>
+          <th class="p-3 text-left">Action</th>
+        </tr>
+      </thead>
+
+      <!-- BODY -->
+      <tbody>
+        <tr *ngFor="let request of exerciseRequests" class="border-b">
+
+          <td class="p-3">{{ request.requestId }}</td>
+          <td class="p-3">{{ request.employeeId }}</td>
+          <td class="p-3">{{ request.employeeName }}</td>
+          <td class="p-3">{{ request.shares }}</td>
+
+          <td class="p-3 flex gap-2">
+            <button 
+              (click)="onAccept(request)"
+              [disabled]="request.status !== 'pending'"
+              class="bg-green-500 text-white px-4 py-2 rounded font-semibold hover:bg-green-600 disabled:opacity-50">
+              Accept
+            </button>
+
+            <button 
+              (click)="onReject(request)"
+              [disabled]="request.status !== 'pending'"
+              class="bg-red-500 text-white px-4 py-2 rounded font-semibold hover:bg-red-600 disabled:opacity-50">
+              Reject
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
