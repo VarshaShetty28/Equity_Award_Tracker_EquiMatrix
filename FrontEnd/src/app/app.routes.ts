@@ -3,6 +3,7 @@ import { LayoutComponent } from './shared/layout/layout.component';
 import { AwardsComponent } from './features/admin/awards/awards.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { DashboardComponent } from './features/admin/dashboard/dashboard.component';
+import { EmployeeComponent } from './features/admin/employees/employees.component';
 
 export const routes: Routes = [
 
@@ -14,7 +15,8 @@ export const routes: Routes = [
     component: LayoutComponent, // WRAPPER
     children: [
       { path: '', component: AwardsComponent }, // temporary
-      { path: 'awards', component: AwardsComponent }
+      { path: 'awards', component: AwardsComponent },
+      { path: 'employees', component: EmployeeComponent }
     ]
   }
 
