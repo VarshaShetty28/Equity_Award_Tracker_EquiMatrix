@@ -1,1 +1,87 @@
-<p>admin-nav-bar works!</p>
+<div class="w-64 h-screen bg-[#0B1437] text-white flex flex-col p-4">
+
+  <!-- LOGO -->
+  <div class="flex items-center gap-3 mb-10">
+    <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
+    <h1 class="text-lg font-bold">EquiMatrix</h1>
+  </div>
+
+  <!-- MENU -->
+  <nav class="flex flex-col gap-6 text-sm">
+
+    <!-- DASHBOARD -->
+    <a routerLink="/admin"
+       routerLinkActive="text-green-400"
+       [routerLinkActiveOptions]="{ exact: true }"
+       #rlaDashboard="routerLinkActive"
+       class="flex items-center justify-between">
+
+      <span class="hover:text-blue-400">Dashboard</span>
+
+      <span *ngIf="rlaDashboard.isActive"
+            class="w-1 h-5 bg-purple-500 rounded"></span>
+    </a>
+
+    <!-- EMPLOYEES -->
+    <a routerLink="/admin/users"
+       routerLinkActive="text-green-400"
+       #rlaUsers="routerLinkActive"
+       class="flex items-center justify-between">
+
+      <span class="hover:text-blue-400">Employees</span>
+
+      <span *ngIf="rlaUsers.isActive"
+            class="w-1 h-5 bg-purple-500 rounded"></span>
+    </a>
+
+    <!-- AWARDS -->
+    <a routerLink="/admin/awards"
+       routerLinkActive="text-green-400"
+       #rlaAwards="routerLinkActive"
+       class="flex items-center justify-between">
+
+      <span class="hover:text-blue-400">Awards</span>
+
+      <span *ngIf="rlaAwards.isActive"
+            class="w-1 h-5 bg-purple-500 rounded"></span>
+    </a>
+
+    <!-- EXERCISE -->
+    <a routerLink="/admin/exercise"
+       routerLinkActive="text-green-400"
+       #rlaExercise="routerLinkActive"
+       class="flex items-center justify-between">
+
+      <span class="hover:text-blue-400">Exercise Requests</span>
+
+      <span *ngIf="rlaExercise.isActive"
+            class="w-1 h-5 bg-purple-500 rounded"></span>
+    </a>
+
+    <!-- REPORTS -->
+    <a routerLink="/admin/reports"
+       routerLinkActive="text-green-400"
+       #rlaReports="routerLinkActive"
+       class="flex items-center justify-between">
+
+      <span class="hover:text-blue-400">Reports</span>
+
+      <span *ngIf="rlaReports.isActive"
+            class="w-1 h-5 bg-purple-500 rounded"></span>
+    </a>
+
+    <!-- NOTIFICATIONS -->
+    <a routerLink="/admin/notifications"
+       routerLinkActive="text-green-400"
+       #rlaNotif="routerLinkActive"
+       class="flex items-center justify-between">
+
+      <span class="hover:text-blue-400">Notifications</span>
+
+      <span *ngIf="rlaNotif.isActive"
+            class="w-1 h-5 bg-purple-500 rounded"></span>
+    </a>
+
+  </nav>
+
+</div>
