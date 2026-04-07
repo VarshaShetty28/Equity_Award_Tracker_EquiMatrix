@@ -1,1 +1,103 @@
-<p>dashboard works!</p>
+<div class="p-6">
+
+  <!-- HEADER -->
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold mb-2">Overview</h1>
+  </div>
+
+  <!-- STATS CARDS -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    
+    <!-- Card 1: Total Employees -->
+    <div class="bg-[#1a2a52] rounded-lg p-6 border border-gray-700">
+      <div class="flex items-center gap-3 mb-3">
+      </div>
+      <p class="text-gray-400 text-sm mb-2">Total Employees</p>
+      <p class="text-3xl font-bold text-white">{{ stats.totalEmployees }}</p>
+    </div>
+
+    <!-- Card 2: Total Awards Granted -->
+    <div class="bg-[#1a2a52] rounded-lg p-6 border border-gray-700">
+      <div class="flex items-center gap-3 mb-3">
+      </div>
+      <p class="text-gray-400 text-sm mb-2">Total Awards Granted</p>
+      <p class="text-3xl font-bold text-white">{{ stats.totalAwardsGranted }}</p>
+    </div>
+
+    <!-- Card 3: Total Vested Units -->
+    <div class="bg-[#1a2a52] rounded-lg p-6 border border-gray-700">
+      <div class="flex items-center gap-3 mb-3">
+      </div>
+      <p class="text-gray-400 text-sm mb-2">Total Vested Units</p>
+      <p class="text-3xl font-bold text-white">{{ stats.totalVestedUnits }}</p>
+    </div>
+
+    <!-- Card 4: Pending Exercise Requests -->
+    <div class="bg-[#1a2a52] rounded-lg p-6 border border-gray-700">
+      <div class="flex items-center gap-3 mb-3">
+      </div>
+      <p class="text-gray-400 text-sm mb-2">Pending Exercise Requests</p>
+      <p class="text-3xl font-bold text-white">{{ stats.pendingRequests }}</p>
+    </div>
+
+  </div>
+
+  <!-- CONTENT SECTION -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+    <!-- Award Type Distribution Chart -->
+    <div class="lg:col-span-1 bg-[#1a2a52] rounded-lg p-6 border border-gray-700">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold text-white">Award Type Distribution</h2>
+        <select class="bg-[#0B1437] text-white px-3 py-1 rounded text-sm border border-gray-600">
+          <option>Monthly</option>
+          <option>Quarterly</option>
+          <option>Yearly</option>
+        </select>
+      </div>
+      
+      <div class="flex flex-col items-center">
+        <!-- Pie Chart -->
+        <div class="relative w-40 h-40 rounded-full" style="background: conic-gradient(from 0deg, #a855f7 0deg, #a855f7 270deg, #06b6d4 270deg, #06b6d4 360deg);"></div>
+        
+        <!-- Legend -->
+        <div class="flex flex-col gap-3 mt-6 text-sm">
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full" style="background-color: #a855f7;"></div>
+            <span class="text-gray-300">ESOP <span class="font-semibold">{{ chartData.esopPercentage }}%</span></span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full" style="background-color: #06b6d4;"></div>
+            <span class="text-gray-300">RSU <span class="font-semibold">{{ chartData.rsuPercentage }}%</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Employee Awards Table -->
+    <div class="lg:col-span-2 bg-[#1a2a52] rounded-lg p-6 border border-gray-700">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead class="border-b border-gray-600">
+            <tr>
+              <th class="text-left px-4 py-3 text-gray-400 font-semibold">Employee Id</th>
+              <th class="text-left px-4 py-3 text-gray-400 font-semibold">Employee Name</th>
+              <th class="text-left px-4 py-3 text-gray-400 font-semibold">No. Of ESOPs</th>
+              <th class="text-left px-4 py-3 text-gray-400 font-semibold">Vesting Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees" class="border-b border-gray-700 hover:bg-[#243054]">
+              <td class="text-left px-4 py-3 text-gray-300">{{ employee.id }}</td>
+              <td class="text-left px-4 py-3 text-white">{{ employee.name }}</td>
+              <td class="text-left px-4 py-3 text-gray-300">{{ employee.esops }}</td>
+              <td class="text-left px-4 py-3 text-gray-300">{{ employee.vestingDate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -7,13 +7,12 @@ import { DashboardComponent } from './features/admin/dashboard/dashboard.compone
 export const routes: Routes = [
 
   { path: '', component: LoginComponent },
-  { path: 'a/w', component: DashboardComponent },
 
   {
     path: 'admin',
     component: LayoutComponent, // WRAPPER
     children: [
-      { path: '', component: AwardsComponent }, // temporary
+      { path: '', component: DashboardComponent }, // temporary
       { path: 'awards', component: AwardsComponent }
     ]
   }
