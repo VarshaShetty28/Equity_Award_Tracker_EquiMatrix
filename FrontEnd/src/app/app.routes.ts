@@ -14,7 +14,8 @@ export const routes: Routes = [
     component: LayoutComponent, // WRAPPER
     children: [
       { path: '', component: DashboardComponent }, // temporary
-      { path: 'awards', component: AwardsComponent }
+      { path: 'awards', component: AwardsComponent },
+      { path: 'employees', component: EmployeeComponent }
     ]
   }
 
