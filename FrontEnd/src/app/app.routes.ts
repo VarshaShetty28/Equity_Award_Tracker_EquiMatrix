@@ -8,15 +8,13 @@ import { EmployeeComponent } from './features/admin/employees/employees.componen
 export const routes: Routes = [
 
   { path: '', component: LoginComponent },
-  { path: 'a/w', component: DashboardComponent },
 
   {
     path: 'admin',
     component: LayoutComponent, // WRAPPER
     children: [
-      { path: '', component: AwardsComponent }, // temporary
-      { path: 'awards', component: AwardsComponent },
-      { path: 'employees', component: EmployeeComponent }
+      { path: '', component: DashboardComponent }, // temporary
+      { path: 'awards', component: AwardsComponent }
     ]
   }
 
