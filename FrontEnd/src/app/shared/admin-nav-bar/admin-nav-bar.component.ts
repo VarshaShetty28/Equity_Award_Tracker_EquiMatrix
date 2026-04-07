@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-nav-bar',
   standalone: true,
-  imports: [],
+  imports: [RouterModule, CommonModule], // 
   templateUrl: './admin-nav-bar.component.html',
-  styleUrl: './admin-nav-bar.component.css'
+  styleUrls: ['./admin-nav-bar.component.css']
 })
-export class AdminNavBarComponent {
-
-}
+export class AdminNavBarComponent {}
