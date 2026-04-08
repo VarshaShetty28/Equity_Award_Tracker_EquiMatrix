@@ -18,7 +18,7 @@ interface VestingRecord {
 })
 export class VestingScheduleComponent {
 
-  // ✅ MOCK DATA (replace with API later)
+  //  MOCK DATA (replace with API later)
   vestingData: VestingRecord[] = [
     {
       awardId: 'AWD-001',
