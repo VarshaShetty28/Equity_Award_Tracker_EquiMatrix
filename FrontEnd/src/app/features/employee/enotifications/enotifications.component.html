@@ -1,1 +1,50 @@
-<p>enotifications works!</p>
+<div class="p-6 bg-gray-100 min-h-screen">
+
+  <!-- HEADER -->
+  <div class="mb-6 -mt-6">
+    <h1 class="text-3xl font-bold text-slate-800">
+      Notifications
+    </h1>
+    <p class="text-slate-500 text-sm mt-1">
+      Stay updated on your equity activities
+    </p>
+  </div>
+
+  <!-- NOTIFICATION LIST -->
+  <div class="space-y-4">
+
+    <div
+      *ngFor="let notification of notifications"
+      class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm flex justify-between items-center hover:bg-[#F0FDF4] transition"
+    >
+
+      <!-- MESSAGE -->
+      <div>
+        <p
+          class="font-medium"
+          [ngClass]="{
+            'text-slate-800': !notification.isRead,
+            'text-slate-500': notification.isRead
+          }"
+        >
+          {{ notification.message }}
+        </p>
+
+        <p class="text-xs text-slate-400 mt-1">
+          {{ notification.date }}
+        </p>
+      </div>
+
+      <!-- STATUS DOT -->
+      <div>
+        <span
+          *ngIf="!notification.isRead"
+          class="inline-block w-2 h-2 rounded-full bg-green-500"
+        ></span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
