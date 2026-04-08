@@ -1,8 +1,8 @@
 <!-- PAGE WRAPPER -->
-<div class="min-h-screen bg-[#0B1437] overflow-x-hidden">
+<div class="min-h-screen bg-[#E9E9E9] overflow-x-hidden">
 
-  <!-- SIDEBAR (FIXED, LOWER Z-INDEX) -->
-  <aside class="fixed top-0 left-0 h-screen w-64 bg-[#0B1437] z-30">
+  <!-- SIDEBAR (FIXED) -->
+  <aside class="fixed top-0 left-0 h-screen w-64 z-30">
     <app-admin-nav-bar></app-admin-nav-bar>
   </aside>
 
@@ -10,14 +10,14 @@
   <div class="ml-64 min-h-screen flex flex-col">
 
     <!-- PAGE CONTENT -->
-    <main class="flex-1 bg-[#0B1437] text-white p-6 overflow-y-auto">
+    <main class="flex-1 bg-[#E9E9E9] text-slate-800 p-6 overflow-y-auto">
       <router-outlet></router-outlet>
     </main>
 
   </div>
 
-  <!-- FOOTER (FULL WIDTH, ABOVE SIDEBAR) -->
-  <footer class="w-full bg-[#0B1437] relative z-50">
+  <!-- FOOTER -->
+  <footer class="w-full bg-[#E9E9E9] relative z-50">
     <app-footer></app-footer>
   </footer>
 
