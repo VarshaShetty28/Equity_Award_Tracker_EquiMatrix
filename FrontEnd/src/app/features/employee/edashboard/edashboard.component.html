@@ -1,1 +1,110 @@
-<p>edashboard works!</p>
+<div class="p-6 bg-gray-100 min-h-screen">
+
+  <!-- HEADER -->
+  <div class="mb-10 -mt-6">
+    <h1 class="text-3xl font-bold mb-2 text-slate-800">
+      Overview
+    </h1>
+  </div>
+
+  <!-- STATS CARDS -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+
+    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+      <p class="text-slate-500 text-sm mb-2">Value of Equity Awards</p>
+      <p class="text-3xl font-bold text-slate-800">
+        ${{ overviewStats.equityAwardsValue }}
+      </p>
+    </div>
+
+    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+      <p class="text-slate-500 text-sm mb-2">Value of Your Shares</p>
+      <p class="text-3xl font-bold text-slate-800">
+        ${{ overviewStats.sharesValue }}
+      </p>
+    </div>
+
+    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+      <p class="text-slate-500 text-sm mb-2">Current Shareholdings</p>
+      <p class="text-3xl font-bold text-slate-800">
+        {{ overviewStats.currentShareholdings }} Units
+      </p>
+    </div>
+
+    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+      <p class="text-slate-500 text-sm mb-2">Pending Exercise Requests</p>
+      <p class="text-3xl font-bold text-slate-800">
+        {{ overviewStats.pendingExerciseRequests }}
+      </p>
+    </div>
+
+  </div>
+
+  <!-- CHART SECTION -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+    <!-- ESOP -->
+    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+      <h2 class="text-xl font-semibold text-slate-800 mb-6">ESOPs</h2>
+
+      <div class="flex flex-col items-center">
+
+        <div
+          class="w-40 h-40 rounded-full"
+          [ngStyle]="{
+            background:
+              'conic-gradient(' +
+              '#8B5CF6 0deg ' + (esopData.unvested * 3.6) + 'deg, ' +
+              '#93C5FD ' + (esopData.unvested * 3.6) + 'deg 360deg)'
+          }">
+        </div>
+
+        <div class="flex gap-10 mt-6 text-sm">
+          <div class="text-center">
+            <p class="text-slate-500">Unvested</p>
+            <p class="font-semibold text-slate-800">{{ esopData.unvested }}%</p>
+          </div>
+
+          <div class="text-center">
+            <p class="text-slate-500">Vested</p>
+            <p class="font-semibold text-slate-800">{{ esopData.vested }}%</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RSU -->
+    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+      <h2 class="text-xl font-semibold text-slate-800 mb-6">RSUs</h2>
+
+      <div class="flex flex-col items-center">
+
+        <div
+          class="w-40 h-40 rounded-full"
+          [ngStyle]="{
+            background:
+              'conic-gradient(' +
+              '#6366F1 0deg ' + (rsuData.unvested * 3.6) + 'deg, ' +
+              '#67E8F9 ' + (rsuData.unvested * 3.6) + 'deg 360deg)'
+          }">
+        </div>
+
+        <div class="flex gap-10 mt-6 text-sm">
+          <div class="text-center">
+            <p class="text-slate-500">Unvested</p>
+            <p class="font-semibold text-slate-800">{{ rsuData.unvested }}%</p>
+          </div>
+
+          <div class="text-center">
+            <p class="text-slate-500">Vested</p>
+            <p class="font-semibold text-slate-800">{{ rsuData.vested }}%</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
