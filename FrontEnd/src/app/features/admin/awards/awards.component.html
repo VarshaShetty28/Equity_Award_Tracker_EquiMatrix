@@ -1,4 +1,4 @@
-<div class="p-6">
+<div class="p-6 text-white">
 
   <!-- HEADER -->
   <div class="flex justify-between items-center mb-6">
@@ -9,12 +9,12 @@
       </p>
     </div>
 
-    <button
-  routerLink="/admin/awards/create"
-  class="bg-green-500 text-black px-5 py-2 rounded font-semibold hover:bg-green-600"
->
-  New Award
-</button>
+    <a
+      routerLink="/admin/awards/create"
+      class="bg-green-500 text-black px-5 py-2 rounded font-semibold hover:bg-green-600"
+    >
+      New Award
+    </a>
   </div>
 
   <!-- SEARCH -->
@@ -25,54 +25,157 @@
       placeholder="Search"
       class="w-[400px] p-2 rounded text-black shadow-lg"
     />
-
     <button class="bg-blue-500 px-4 py-2 rounded">
       Search
     </button>
   </div>
 
-  <!-- TABLE CARD -->
+  <!-- TABLE -->
   <div class="bg-gray-200 text-black p-6 rounded">
-
     <h2 class="text-xl font-semibold mb-4">Existing Awards</h2>
 
     <table class="w-full">
-
-      <!-- HEAD -->
       <thead class="bg-[#0B1437] text-white">
         <tr>
-          <th class="p-3 text-center">Employee Id</th>
-          <th class="p-3 text-center">Employee Name</th>
-          <th class="p-3 text-center">ESOP</th>
-          <th class="p-3 text-center">RSU</th>
+          <th class="p-3 text-center">Award ID</th>
+          <th class="p-3 text-center">Employee ID</th>
+          <th class="p-3 text-center">Grant Type</th>
+          <th class="p-3 text-center">Shares</th>
+          <th class="p-3 text-center">Strike Price</th>
           <th class="p-3 text-center">Action</th>
         </tr>
       </thead>
 
-      <!-- BODY -->
       <tbody>
         <tr *ngFor="let award of awards" class="border-b">
+          <td class="p-3 text-center">{{ award.awardId }}</td>
+          <td class="p-3 text-center">{{ award.employeeId }}</td>
+          <td class="p-3 text-center">{{ award.grantType }}</td>
+          <td class="p-3 text-center">{{ award.numberOfShares }}</td>
+          <td class="p-3 text-center">{{ award.strikePrice }}</td>
 
-          <td class="p-3 text-center">{{ award.id }}</td>
-          <td class="p-3 text-center">{{ award.name }}</td>
-          <td class="p-3 text-center">{{ award.esop }}</td>
-          <td class="p-3 text-center">{{ award.rsu }}</td>
-
-          <td class="p-3 flex justify-center items-center gap-2">
-            <button class="bg-green-500 text-white px-3 py-1 rounded">
+          <td class="p-3 flex justify-center gap-2">
+            <button
+              class="bg-green-500 text-white px-3 py-1 rounded"
+              (click)="openEditPopup(award)"
+            >
               Edit
             </button>
-
             <button class="bg-red-500 text-white px-3 py-1 rounded">
               Delete
             </button>
           </td>
-
         </tr>
       </tbody>
-
     </table>
-
   </div>
 
+</div>
+
+<!-- ================================= -->
+<!-- EDIT GRANT POPUP (CREATE‑MATCHED) -->
+<!-- ================================= -->
+
+<div
+  *ngIf="showEditPopup"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+>
+  <div class="bg-white text-black w-[450px] p-6 rounded-xl">
+
+    <h2 class="text-xl font-semibold mb-5">
+      Edit Equity Grant
+    </h2>
+
+    <!-- Employee ID -->
+    <div class="mb-3">
+      <label class="block text-sm font-medium mb-1">
+        Employee ID
+      </label>
+      <input
+        type="text"
+        [(ngModel)]="editGrant.employeeId"
+        disabled
+        class="w-full rounded border px-3 py-2 bg-gray-100"
+      />
+    </div>
+
+    <!-- Grant Type -->
+    <div class="mb-3">
+      <label class="block text-sm font-medium mb-1">
+        Grant Type
+      </label>
+      <select
+        [(ngModel)]="editGrant.grantType"
+        class="w-full rounded border px-3 py-2"
+      >
+        <option value="ESOP">ESOP</option>
+        <option value="RSU">RSU</option>
+      </select>
+    </div>
+
+    <!-- Number of Shares -->
+    <div class="mb-3">
+      <label class="block text-sm font-medium mb-1">
+        Number of Shares
+      </label>
+      <input
+        type="number"
+        [(ngModel)]="editGrant.numberOfShares"
+        class="w-full rounded border px-3 py-2"
+      />
+    </div>
+
+    <!-- Strike Price -->
+    <div class="mb-3">
+      <label class="block text-sm font-medium mb-1">
+        Strike Price
+      </label>
+      <input
+        type="number"
+        [(ngModel)]="editGrant.strikePrice"
+        class="w-full rounded border px-3 py-2"
+      />
+    </div>
+
+    <!-- Vesting Period -->
+    <div class="mb-3">
+      <label class="block text-sm font-medium mb-1">
+        Vesting Period (Years)
+      </label>
+      <input
+        type="number"
+        [(ngModel)]="editGrant.vestingPeriod"
+        class="w-full rounded border px-3 py-2"
+      />
+    </div>
+
+    <!-- Grant Date -->
+    <div class="mb-5">
+      <label class="block text-sm font-medium mb-1">
+        Grant Date
+      </label>
+      <input
+        type="date"
+        [(ngModel)]="editGrant.grantDate"
+        class="w-full rounded border px-3 py-2"
+      />
+    </div>
+
+    <!-- Actions -->
+    <div class="flex justify-end gap-3">
+      <button
+        class="px-4 py-2 border rounded"
+        (click)="closeEditPopup()"
+      >
+        Cancel
+      </button>
+      <button
+        class="bg-blue-600 text-white px-5 py-2 rounded"
+        (click)="closeEditPopup()"
+      >
+        Save
+      </button>
+    </div>
+
+  </div>
 </div>

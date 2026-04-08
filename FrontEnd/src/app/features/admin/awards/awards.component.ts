@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule   // REQUIRED for routerLink
+    RouterModule
   ],
   templateUrl: './awards.component.html'
 })
@@ -17,9 +17,49 @@ export class AwardsComponent {
 
   searchText = '';
 
+  // ✅ Dummy awards data (UI only)
   awards = [
-    { id: 1, name: 'John Doe', esop: 1000, rsu: 500 },
-    { id: 2, name: 'Jane Smith', esop: 1500, rsu: 700 },
-    { id: 3, name: 'Mike Ross', esop: 800, rsu: 300 }
+    {
+      awardId: 1,
+      employeeId: 'EMP001',
+      grantType: 'ESOP',
+      numberOfShares: 1000,
+      strikePrice: 120,
+      vestingPeriod: 5,
+      grantDate: '2024-01-15'
+    },
+    {
+      awardId: 2,
+      employeeId: 'EMP002',
+      grantType: 'RSU',
+      numberOfShares: 500,
+      strikePrice: 0,
+      vestingPeriod: 5,
+      grantDate: '2024-02-20'
+    }
   ];
+
+  // ✅ Popup state
+  showEditPopup = false;
+
+  // ✅ Edit form data (same fields as Create Grant)
+  editGrant = {
+    employeeId: '',
+    grantType: 'ESOP',
+    numberOfShares: 0,
+    strikePrice: 0,
+    vestingPeriod: 5,
+    grantDate: ''
+  };
+
+  // ✅ Open edit popup
+  openEditPopup(award: any): void {
+    this.editGrant = { ...award };
+    this.showEditPopup = true;
+  }
+
+  // ✅ Close popup
+  closeEditPopup(): void {
+    this.showEditPopup = false;
+  }
 }
