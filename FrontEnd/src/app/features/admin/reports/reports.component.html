@@ -1,0 +1,75 @@
+<div class="p-6 text-white bg-[#0B1437] min-h-screen">
+
+  <h2 class="text-xl font-bold mb-6">Generate Report</h2>
+
+  <!-- SEARCH -->
+  <div class="flex gap-3 mb-6">
+    <input
+      type="text"
+      [(ngModel)]="userId"
+      placeholder="Enter User ID"
+      class="px-4 py-2 w-64 text-black rounded"
+    />
+    
+    <button
+      (click)="generateReport()"
+      class="px-4 py-2 bg-blue-500 rounded hover:bg-blue-600"
+    >
+      Generate
+    </button>
+  </div>
+
+  <!-- FILTER -->
+  <div class="flex gap-4 mb-6" *ngIf="filteredReports.length">
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="radio" name="filter" value="ALL"
+             [(ngModel)]="selectedFilter"
+             (change)="applyFilter()" />
+      All
+    </label>
+
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="radio" name="filter" value="ESOP"
+             [(ngModel)]="selectedFilter"
+             (change)="applyFilter()" />
+      ESOP
+    </label>
+
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="radio" name="filter" value="RSU"
+             [(ngModel)]="selectedFilter"
+             (change)="applyFilter()" />
+      RSU
+    </label>
+  </div>
+
+  <!-- REPORT TABLE -->
+  <table *ngIf="filteredReports.length"
+         class="w-full text-sm border border-gray-600">
+    <thead class="bg-gray-800">
+      <tr>
+        <th class="p-2">Award Type</th>
+        <th class="p-2">Units</th>
+        <th class="p-2">Grant Date</th>
+        <th class="p-2">Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let r of filteredReports"
+          class="text-center border-t border-gray-700">
+        <td class="p-2">{{ r.awardType }}</td>
+        <td class="p-2">{{ r.units }}</td>
+        <td class="p-2">{{ r.grantDate }}</td>
+        <td class="p-2">{{ r.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- NO DATA -->
+  <p *ngIf="userId && !filteredReports.length" class="mt-6 text-red-400">
+    No records found for this user.
+  </p>
+
+</div>
+``
