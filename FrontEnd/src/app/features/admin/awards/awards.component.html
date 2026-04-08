@@ -41,11 +41,11 @@
       <!-- HEAD -->
       <thead class="bg-[#0B1437] text-white">
         <tr>
-          <th class="p-3 text-left">Employee Id</th>
-          <th class="p-3 text-left">Employee Name</th>
-          <th class="p-3 text-left">ESOP</th>
-          <th class="p-3 text-left">RSU</th>
-          <th class="p-3 text-left">Action</th>
+          <th class="p-3 text-center">Employee Id</th>
+          <th class="p-3 text-center">Employee Name</th>
+          <th class="p-3 text-center">ESOP</th>
+          <th class="p-3 text-center">RSU</th>
+          <th class="p-3 text-center">Action</th>
         </tr>
       </thead>
 
@@ -53,12 +53,12 @@
       <tbody>
         <tr *ngFor="let award of awards" class="border-b">
 
-          <td class="p-3">{{ award.id }}</td>
-          <td class="p-3">{{ award.name }}</td>
-          <td class="p-3">{{ award.esop }}</td>
-          <td class="p-3">{{ award.rsu }}</td>
+          <td class="p-3 text-center">{{ award.id }}</td>
+          <td class="p-3 text-center">{{ award.name }}</td>
+          <td class="p-3 text-center">{{ award.esop }}</td>
+          <td class="p-3 text-center">{{ award.rsu }}</td>
 
-          <td class="p-3 flex gap-2">
+          <td class="p-3 flex justify-center items-center gap-2">
             <button class="bg-green-500 text-white px-3 py-1 rounded">
               Edit
             </button>
