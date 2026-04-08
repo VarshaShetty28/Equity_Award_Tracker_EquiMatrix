@@ -1,31 +1,51 @@
-<div class="p-6">
+<div class="p-6 bg-gray-100 min-h-screen text-gray-800">
 
   <!-- HEADER -->
   <div class="mb-8">
-    <h1 class="text-3xl font-bold mb-2">Notifications</h1>
-    <p class="text-gray-400 text-sm">Stay updated with your equity award information</p>
+    <h1 class="text-3xl font-bold mb-2 text-gray-900">
+      Notifications
+    </h1>
+    <p class="text-gray-600 text-sm">
+      Stay updated with your equity award information
+    </p>
   </div>
 
   <!-- NOTIFICATIONS LIST -->
   <div class="space-y-4">
-    <div *ngFor="let notification of notifications" class="bg-[#1a2a52] rounded-lg p-6 border border-gray-700 hover:border-blue-500 transition-all">
-      
+
+    <!-- Notification Card -->
+    <div
+      *ngFor="let notification of notifications"
+      class="bg-white rounded-lg p-6 border border-gray-200 hover:border-blue-400 hover:shadow-sm transition-all"
+    >
+
       <!-- Notification Header -->
       <div class="flex items-start justify-between mb-3">
         <div class="flex-1">
-          <h2 class="text-xl font-semibold text-white mb-1">{{ notification.title }}</h2>
-          <p class="text-sm text-gray-400">{{ notification.date }}</p>
+          <h2 class="text-xl font-semibold text-gray-900 mb-1">
+            {{ notification.title }}
+          </h2>
+          <p class="text-sm text-gray-500">
+            {{ notification.date }}
+          </p>
         </div>
       </div>
 
       <!-- Notification Message -->
-      <p class="text-gray-300 leading-relaxed">{{ notification.message }}</p>
+      <p class="text-gray-700 leading-relaxed">
+        {{ notification.message }}
+      </p>
 
     </div>
 
     <!-- Empty State -->
-    <div *ngIf="notifications.length === 0" class="bg-[#1a2a52] rounded-lg p-12 border border-gray-700 text-center">
-      <p class="text-gray-400 text-lg">No notifications yet</p>
+    <div
+      *ngIf="notifications.length === 0"
+      class="bg-white rounded-lg p-12 border border-gray-200 text-center"
+    >
+      <p class="text-gray-500 text-lg">
+        No notifications yet
+      </p>
     </div>
 
   </div>
