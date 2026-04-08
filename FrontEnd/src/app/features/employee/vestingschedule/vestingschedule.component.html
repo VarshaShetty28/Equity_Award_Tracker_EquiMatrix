@@ -1,1 +1,80 @@
-<p>vestingschedule works!</p>
+<div class="p-6 bg-gray-100 min-h-screen">
+
+  <!-- HEADER -->
+  <div class="mb-8 -mt-6">
+    <h1 class="text-3xl font-bold text-slate-800">
+      Vesting Schedule
+    </h1>
+    <p class="text-slate-500 text-sm mt-1">
+      View your ESOP and RSU vesting details
+    </p>
+  </div>
+
+  <!-- TABLE CARD -->
+  <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+
+        <!-- TABLE HEADER -->
+        <thead class="border-b border-slate-200 bg-slate-50">
+          <tr>
+            <th class="text-left px-4 py-3 text-slate-500 font-semibold">
+              Award ID
+            </th>
+            <th class="text-left px-4 py-3 text-slate-500 font-semibold">
+              Type
+            </th>
+            <th class="text-left px-4 py-3 text-slate-500 font-semibold">
+              No. of Shares
+            </th>
+            <th class="text-left px-4 py-3 text-slate-500 font-semibold">
+              Grant Date
+            </th>
+            <th class="text-left px-4 py-3 text-slate-500 font-semibold">
+              Final Vesting Date
+            </th>
+            <th class="text-left px-4 py-3 text-slate-500 font-semibold">
+              Strike Price
+            </th>
+          </tr>
+        </thead>
+
+        <!-- TABLE BODY -->
+        <tbody>
+          <tr
+            *ngFor="let record of vestingData"
+            class="border-b border-slate-100 hover:bg-[#F0FDF4] transition"
+          >
+            <td class="px-4 py-3 text-slate-700 font-medium">
+              {{ record.awardId }}
+            </td>
+
+            <td class="px-4 py-3 text-slate-700">
+              {{ record.type }}
+            </td>
+
+            <td class="px-4 py-3 text-slate-600">
+              {{ record.shares }}
+            </td>
+
+            <td class="px-4 py-3 text-slate-600">
+              {{ record.grantDate }}
+            </td>
+
+            <td class="px-4 py-3 text-slate-600">
+              {{ record.finalVestingDate }}
+            </td>
+
+            <td class="px-4 py-3 text-slate-600">
+              {{ record.type === 'RSU' ? '—' : record.strikePrice }}
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+
+</div>
