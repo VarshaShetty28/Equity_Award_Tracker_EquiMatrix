@@ -15,6 +15,7 @@ import { ReportsComponent } from './features/admin/reports/reports.component';
 //for employee dashboard
 import {EmployeeDashboardComponent }from './features/employee/edashboard/edashboard.component';
 import { VestingScheduleComponent } from './features/employee/vestingschedule/vestingschedule.component';
+import { MyRequestsComponent } from './features/employee/myrequests/myrequests.component';
 export const routes: Routes = [
 
   { path: '', component: LoginComponent },
@@ -38,7 +39,8 @@ export const routes: Routes = [
     component: EmplayoutComponent,
     children: [
       { path: '', component: EmployeeDashboardComponent },
-      { path: 'vesting', component: VestingScheduleComponent }
+      { path: 'vesting', component: VestingScheduleComponent },
+      { path: 'requests', component: MyRequestsComponent }
     ]
   }
 
