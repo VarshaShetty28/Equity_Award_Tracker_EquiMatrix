@@ -7,6 +7,7 @@ import { EmployeeComponent } from './features/admin/employees/employees.componen
 import { ExerciseRequestComponent } from './features/admin/exercise-request/exercise-request.component';
 import { NotificationsComponent } from './features/admin/notifications/notifications.component';
 import { ReportsComponent } from './features/admin/reports/reports.component';
+import { CreateAwardComponent } from './features/admin/awards/create-award/create-award.component';
 
 export const routes: Routes = [
 
@@ -18,6 +19,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent }, // temporary
       { path: 'awards', component: AwardsComponent },
+      { path: 'awards/create', component: CreateAwardComponent },
       { path: 'employees', component: EmployeeComponent },
       { path: 'exercise', component: ExerciseRequestComponent },
       { path: 'notifications', component: NotificationsComponent },
