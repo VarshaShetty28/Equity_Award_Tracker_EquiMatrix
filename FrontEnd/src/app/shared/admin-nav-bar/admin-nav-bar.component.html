@@ -1,12 +1,29 @@
 <div class="w-64 h-screen bg-[#FAFAFA] text-slate-700 flex flex-col p-4">
 
   <!-- LOGO -->
-  <div class="flex items-center gap-3 mb-10">
+  <div class="flex items-center gap-3 mb-6">
     <img
       src="assets/NewLogo.png"
       alt="EquiMatrix Logo"
       class="h-14 object-contain"
     />
+  </div>
+
+  <!-- USER INFO (like your screenshot) -->
+  <div
+    class="flex items-center gap-3 px-4 py-3 mb-6 rounded-xl bg-slate-100 cursor-pointer hover:bg-slate-200 transition"
+  >
+    <!-- Avatar -->
+    <div
+      class="h-9 w-9 rounded-full bg-green-500 text-white flex items-center justify-center font-semibold"
+    >
+      A
+    </div>
+
+    <!-- Name -->
+    <div class="text-sm font-medium text-slate-700">
+      Admin
+    </div>
   </div>
 
   <!-- MENU -->
@@ -24,9 +41,7 @@
         'hover:bg-slate-100 text-slate-600': !rlaDashboard.isActive
       }"
     >
-      <span class="font-medium">
-        Dashboard
-      </span>
+      <span class="font-medium">Dashboard</span>
     </a>
 
     <!-- EMPLOYEES -->
@@ -40,9 +55,7 @@
         'hover:bg-slate-100 text-slate-600': !rlaUsers.isActive
       }"
     >
-      <span class="font-medium">
-        Employees
-      </span>
+      <span class="font-medium">Employees</span>
     </a>
 
     <!-- AWARDS -->
@@ -56,9 +69,7 @@
         'hover:bg-slate-100 text-slate-600': !rlaAwards.isActive
       }"
     >
-      <span class="font-medium">
-        Awards
-      </span>
+      <span class="font-medium">Awards</span>
     </a>
 
     <!-- EXERCISE -->
@@ -72,9 +83,7 @@
         'hover:bg-slate-100 text-slate-600': !rlaExercise.isActive
       }"
     >
-      <span class="font-medium">
-        Exercise Requests
-      </span>
+      <span class="font-medium">Exercise Requests</span>
     </a>
 
     <!-- REPORTS -->
@@ -88,9 +97,7 @@
         'hover:bg-slate-100 text-slate-600': !rlaReports.isActive
       }"
     >
-      <span class="font-medium">
-        Reports
-      </span>
+      <span class="font-medium">Reports</span>
     </a>
 
     <!-- NOTIFICATIONS -->
@@ -104,9 +111,7 @@
         'hover:bg-slate-100 text-slate-600': !rlaNotif.isActive
       }"
     >
-      <span class="font-medium">
-        Notifications
-      </span>
+      <span class="font-medium">Notifications</span>
     </a>
 
   </nav>
