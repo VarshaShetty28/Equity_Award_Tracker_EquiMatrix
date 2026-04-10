@@ -17,7 +17,7 @@ export class AwardsComponent {
 
   searchText = '';
 
-  // 🔹 Original Awards Data
+  // Original Awards Data
   awards = [
     {
       awardId: 'AWD-001',
@@ -39,10 +39,10 @@ export class AwardsComponent {
     }
   ];
 
-  // 🔹 Filtered Awards (table uses this)
+  //  Filtered Awards (table uses this)
   filteredAwards = [...this.awards];
 
-  // 🔍 Search only by Employee ID
+  // Search only by Employee ID
   onSearch() {
     const term = this.searchText.toLowerCase().trim();
 
