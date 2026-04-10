@@ -2,17 +2,20 @@
 
   <!-- PAGE HEADER -->
   <div class="flex items-center justify-between">
-    <div class="mb-10 ">
-  <h1 class="text-3xl font-bold mb-2 text-slate-800">
-    Employees
-  </h1>
-  </div>
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold mb-2 text-slate-800">
+        Employees
+      </h1>
+    </div>
+
     <div class="relative">
-      <input
+      <!-- <input
         type="text"
-        placeholder="Search"
-        class="pl-10 pr-4 py-2 rounded-lg bg-white text-black text-sm focus:outline-none"
-      />
+        placeholder="Search by employee name"
+        [(ngModel)]="searchEmployeeName"
+        (input)="onSearchEmployee()"
+        class="pl-4 pr-4 py-2 rounded-lg bg-white text-black text-sm focus:outline-none border"
+      /> -->
     </div>
   </div>
 
@@ -42,7 +45,9 @@
 
       <input
         type="text"
-        placeholder="Search employee"
+        placeholder="Search Name"
+        [(ngModel)]="searchEmployeeName"
+        (input)="onSearchEmployee()"
         class="border rounded-md px-3 py-1 text-sm"
       />
     </div>
@@ -61,7 +66,7 @@
 
         <tbody>
           <tr
-            *ngFor="let emp of employees"
+            *ngFor="let emp of filteredEmployees"
             class="border-b last:border-none"
           >
             <td class="py-3">{{ emp.name }}</td>
@@ -80,13 +85,20 @@
               </span>
             </td>
           </tr>
+
+          <!-- ✅ No results message -->
+          <tr *ngIf="filteredEmployees.length === 0">
+            <td colspan="5" class="py-6 text-center text-gray-500">
+              No employees found
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
 
     <!-- FOOTER -->
     <div class="text-sm text-gray-500 mt-4">
-      Showing {{ employees.length }} entries
+      Showing {{ filteredEmployees.length }} entries
     </div>
 
   </div>
