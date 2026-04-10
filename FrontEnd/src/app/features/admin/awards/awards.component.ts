@@ -17,7 +17,7 @@ export class AwardsComponent {
 
   searchText = '';
 
-  // ✅ Dummy awards data (UI only)
+  // Dummy awards data (UI only)
   awards = [
     {
       awardId: 1,
@@ -39,10 +39,10 @@ export class AwardsComponent {
     }
   ];
 
-  // ✅ Popup state
+  // Popup state
   showEditPopup = false;
 
-  // ✅ Edit form data (same fields as Create Grant)
+  // Edit form data (same fields as Create Grant)
   editGrant = {
     employeeId: '',
     grantType: 'ESOP',
@@ -52,14 +52,16 @@ export class AwardsComponent {
     grantDate: ''
   };
 
-  // ✅ Open edit popup
+  // Open edit popup
   openEditPopup(award: any): void {
     this.editGrant = { ...award };
     this.showEditPopup = true;
+    document.body.classList.add('overflow-hidden')
   }
 
-  // ✅ Close popup
+  // Close popup
   closeEditPopup(): void {
     this.showEditPopup = false;
+    document.body.classList.remove('overflow-hidden')
   }
 }
