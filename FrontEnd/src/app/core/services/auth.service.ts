@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface User {
   email: string;
@@ -7,16 +8,20 @@ export interface User {
 }
 
 @Injectable({
-  providedIn: 'root' //Singleton
+  providedIn: 'root'
 })
 export class AuthService {
 
-  login(email: string, password: string): Observable<User> {
+  private baseUrl = 'http://localhost:8080/api/auth'; // you can change later
 
-    // MOCK (replace with API later)
-    if (email === 'admin@gmail.com') {
-      return of({ email, role: 'ADMIN' });
-    }
-    return of({ email, role: 'EMPLOYEE' });
+  constructor(private http: HttpClient) {}
+
+  // UPDATED login method (3 params)
+  login(email: string, password: string, role: string): Observable<User> {
+    return this.http.post<User>(`${this.baseUrl}/login`, {
+      email,
+      password,
+      role
+    });
   }
 }

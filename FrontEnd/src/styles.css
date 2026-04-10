@@ -3,7 +3,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html,body {
+/* html,body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -11,6 +11,6 @@ html,body {
 app-root {
     display: block;
     min-height: 100vh;
-}
+} */
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
