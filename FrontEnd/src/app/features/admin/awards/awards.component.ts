@@ -17,10 +17,10 @@ export class AwardsComponent {
 
   searchText = '';
 
-  // Dummy awards data (UI only)
+  // 🔹 Original Awards Data
   awards = [
     {
-      awardId: 1,
+      awardId: 'AWD-001',
       employeeId: 'EMP001',
       grantType: 'ESOP',
       numberOfShares: 1000,
@@ -29,7 +29,7 @@ export class AwardsComponent {
       grantDate: '2024-01-15'
     },
     {
-      awardId: 2,
+      awardId: 'AWD-002',
       employeeId: 'EMP002',
       grantType: 'RSU',
       numberOfShares: 500,
@@ -39,10 +39,27 @@ export class AwardsComponent {
     }
   ];
 
+  // 🔹 Filtered Awards (table uses this)
+  filteredAwards = [...this.awards];
+
+  // 🔍 Search only by Employee ID
+  onSearch() {
+    const term = this.searchText.toLowerCase().trim();
+
+    if (!term) {
+      this.filteredAwards = [...this.awards];
+      return;
+    }
+
+    this.filteredAwards = this.awards.filter(a =>
+      a.employeeId.toLowerCase().includes(term)
+    );
+  }
+
   // Popup state
   showEditPopup = false;
 
-  // Edit form data (same fields as Create Grant)
+  // Edit form data
   editGrant = {
     employeeId: '',
     grantType: 'ESOP',
@@ -52,16 +69,12 @@ export class AwardsComponent {
     grantDate: ''
   };
 
-  // Open edit popup
   openEditPopup(award: any): void {
     this.editGrant = { ...award };
     this.showEditPopup = true;
-    document.body.classList.add('overflow-hidden')
   }
 
-  // Close popup
   closeEditPopup(): void {
     this.showEditPopup = false;
-    document.body.classList.remove('overflow-hidden')
   }
 }

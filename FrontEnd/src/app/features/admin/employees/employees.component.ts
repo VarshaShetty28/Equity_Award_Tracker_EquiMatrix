@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 interface Employee {
   name: string;
@@ -12,15 +13,16 @@ interface Employee {
 @Component({
   selector: 'app-employee',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './employees.component.html'
 })
-
 export class EmployeeComponent {
 
   totalEmployees = 5423;
   totalGrants = 1893;
   pendingRequests = 18;
+
+  searchEmployeeName = '';
 
   employees: Employee[] = [
     {
@@ -66,4 +68,16 @@ export class EmployeeComponent {
       status: 'Active'
     }
   ];
+
+  // ✅ This is what the table uses
+  filteredEmployees: Employee[] = [...this.employees];
+
+  // ✅ Search by EMPLOYEE NAME
+  onSearchEmployee() {
+    const value = this.searchEmployeeName.trim().toLowerCase();
+
+    this.filteredEmployees = this.employees.filter(emp =>
+      emp.name.toLowerCase().includes(value)
+    );
+  }
 }
