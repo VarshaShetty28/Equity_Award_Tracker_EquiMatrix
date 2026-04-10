@@ -72,9 +72,11 @@ export class AwardsComponent {
   openEditPopup(award: any): void {
     this.editGrant = { ...award };
     this.showEditPopup = true;
+    document.body.classList.add('overflow-hidden')
   }
 
   closeEditPopup(): void {
     this.showEditPopup = false;
+    document.body.classList.remove('overflow-hidden')
   }
 }
