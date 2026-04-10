@@ -1,19 +1,15 @@
-<!-- PAGE WRAPPER -->
 <div class="min-h-screen bg-gray-100 overflow-x-hidden">
 
-  <!-- SIDEBAR (FIXED) -->
+  <!-- SIDEBAR -->
   <aside class="fixed top-0 left-0 h-screen w-64 z-30">
-    <app-admin-nav-bar></app-admin-nav-bar>
+    <app-employee-nav-bar></app-employee-nav-bar>
   </aside>
 
-  <!-- MAIN CONTENT (OFFSET FOR SIDEBAR) -->
+  <!-- MAIN CONTENT -->
   <div class="ml-64 min-h-screen flex flex-col">
-
-    <!-- PAGE CONTENT -->
     <main class="flex-1 bg-gray-100 text-slate-800 p-6 overflow-y-auto">
       <router-outlet></router-outlet>
     </main>
-
   </div>
 
   <!-- FOOTER -->

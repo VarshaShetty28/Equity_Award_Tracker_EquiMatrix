@@ -1,17 +1,21 @@
-<div class="p-6 text-white">
+<div class="p-6 min-h-screen bg-gray-100 text-slate-800">
 
   <!-- HEADER -->
-  <div class="flex justify-between items-center mb-6">
+  <div class="flex justify-between items-center mb-8">
     <div>
-      <h1 class="text-2xl font-bold">Awards Management</h1>
-      <p class="text-gray-300 text-sm">
+      <div class="mb-2 -mt-6">
+      <h1 class="text-3xl font-bold mb-2 text-slate-800">
+        Awards Management
+      </h1>
+      <p class="text-slate-500 text-sm">
         Manage ESOPs and RSUs across employees
       </p>
+      </div>
     </div>
 
     <a
       routerLink="/admin/awards/create"
-      class="bg-green-500 text-black px-5 py-2 rounded font-semibold hover:bg-green-600"
+      class="bg-green-500 text-white px-5 py-2 rounded-lg font-medium hover:bg-green-600 transition"
     >
       New Award
     </a>
@@ -22,46 +26,53 @@
     <input
       type="text"
       [(ngModel)]="searchText"
-      placeholder="Search"
-      class="w-[400px] p-2 rounded text-black shadow-lg"
+      placeholder="Search awards or employee ID"
+      class="w-[400px] px-4 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-green-400"
     />
-    <button class="bg-blue-500 px-4 py-2 rounded">
+    <button
+      class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+    >
       Search
     </button>
   </div>
 
-  <!-- TABLE -->
-  <div class="bg-gray-200 text-black p-6 rounded">
-    <h2 class="text-xl font-semibold mb-4">Existing Awards</h2>
+  <!-- TABLE CARD -->
+  <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+    <h2 class="text-lg font-semibold mb-4">Existing Awards</h2>
 
-    <table class="w-full">
-      <thead class="bg-[#0B1437] text-white">
+    <table class="w-full text-sm">
+      <thead class="bg-slate-50 border-b border-slate-200 text-slate-600">
         <tr>
-          <th class="p-3 text-center">Award ID</th>
-          <th class="p-3 text-center">Employee ID</th>
-          <th class="p-3 text-center">Grant Type</th>
-          <th class="p-3 text-center">Shares</th>
-          <th class="p-3 text-center">Strike Price</th>
-          <th class="p-3 text-center">Action</th>
+          <th class="p-3 text-center font-semibold">Award ID</th>
+          <th class="p-3 text-center font-semibold">Employee ID</th>
+          <th class="p-3 text-center font-semibold">Grant Type</th>
+          <th class="p-3 text-center font-semibold">Shares</th>
+          <th class="p-3 text-center font-semibold">Strike Price</th>
+          <th class="p-3 text-center font-semibold">Action</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr *ngFor="let award of awards" class="border-b">
+        <tr
+          *ngFor="let award of awards"
+          class="border-b border-slate-100 hover:bg-slate-50 transition"
+        >
           <td class="p-3 text-center">{{ award.awardId }}</td>
           <td class="p-3 text-center">{{ award.employeeId }}</td>
-          <td class="p-3 text-center">{{ award.grantType }}</td>
+          <td class="p-3 text-center font-medium">{{ award.grantType }}</td>
           <td class="p-3 text-center">{{ award.numberOfShares }}</td>
           <td class="p-3 text-center">{{ award.strikePrice }}</td>
 
           <td class="p-3 flex justify-center gap-2">
             <button
-              class="bg-green-500 text-white px-3 py-1 rounded"
+              class="bg-green-500 text-white px-3 py-1 rounded-lg text-xs hover:bg-green-600 transition"
               (click)="openEditPopup(award)"
             >
               Edit
             </button>
-            <button class="bg-red-500 text-white px-3 py-1 rounded">
+            <button
+              class="bg-red-500 text-white px-3 py-1 rounded-lg text-xs hover:bg-red-600 transition"
+            >
               Delete
             </button>
           </td>
@@ -72,15 +83,16 @@
 
 </div>
 
-<!-- ================================= -->
-<!-- EDIT GRANT POPUP (CREATE‑MATCHED) -->
-<!-- ================================= -->
+<!-- ============================== -->
+<!-- EDIT GRANT POPUP -->
+<!-- ============================== -->
 
 <div
   *ngIf="showEditPopup"
-  class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40"
 >
-  <div class="bg-white text-black w-[450px] p-6 rounded-xl">
+
+  <div class="bg-white text-slate-800 w-[450px] p-6 rounded-xl shadow-lg">
 
     <h2 class="text-xl font-semibold mb-5">
       Edit Equity Grant
@@ -88,25 +100,21 @@
 
     <!-- Employee ID -->
     <div class="mb-3">
-      <label class="block text-sm font-medium mb-1">
-        Employee ID
-      </label>
+      <label class="block text-sm font-medium mb-1">Employee ID</label>
       <input
         type="text"
         [(ngModel)]="editGrant.employeeId"
         disabled
-        class="w-full rounded border px-3 py-2 bg-gray-100"
+        class="w-full rounded-lg border px-3 py-2 bg-slate-100 text-slate-600"
       />
     </div>
 
     <!-- Grant Type -->
     <div class="mb-3">
-      <label class="block text-sm font-medium mb-1">
-        Grant Type
-      </label>
+      <label class="block text-sm font-medium mb-1">Grant Type</label>
       <select
         [(ngModel)]="editGrant.grantType"
-        class="w-full rounded border px-3 py-2"
+        class="w-full rounded-lg border px-3 py-2 bg-white"
       >
         <option value="ESOP">ESOP</option>
         <option value="RSU">RSU</option>
@@ -115,25 +123,21 @@
 
     <!-- Number of Shares -->
     <div class="mb-3">
-      <label class="block text-sm font-medium mb-1">
-        Number of Shares
-      </label>
+      <label class="block text-sm font-medium mb-1">Number of Shares</label>
       <input
         type="number"
         [(ngModel)]="editGrant.numberOfShares"
-        class="w-full rounded border px-3 py-2"
+        class="w-full rounded-lg border px-3 py-2"
       />
     </div>
 
     <!-- Strike Price -->
     <div class="mb-3">
-      <label class="block text-sm font-medium mb-1">
-        Strike Price
-      </label>
+      <label class="block text-sm font-medium mb-1">Strike Price</label>
       <input
         type="number"
         [(ngModel)]="editGrant.strikePrice"
-        class="w-full rounded border px-3 py-2"
+        class="w-full rounded-lg border px-3 py-2"
       />
     </div>
 
@@ -145,32 +149,30 @@
       <input
         type="number"
         [(ngModel)]="editGrant.vestingPeriod"
-        class="w-full rounded border px-3 py-2"
+        class="w-full rounded-lg border px-3 py-2"
       />
     </div>
 
     <!-- Grant Date -->
     <div class="mb-5">
-      <label class="block text-sm font-medium mb-1">
-        Grant Date
-      </label>
+      <label class="block text-sm font-medium mb-1">Grant Date</label>
       <input
         type="date"
         [(ngModel)]="editGrant.grantDate"
-        class="w-full rounded border px-3 py-2"
+        class="w-full rounded-lg border px-3 py-2"
       />
     </div>
 
     <!-- Actions -->
     <div class="flex justify-end gap-3">
       <button
-        class="px-4 py-2 border rounded"
+        class="px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-100"
         (click)="closeEditPopup()"
       >
         Cancel
       </button>
       <button
-        class="bg-blue-600 text-white px-5 py-2 rounded"
+        class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition"
         (click)="closeEditPopup()"
       >
         Save

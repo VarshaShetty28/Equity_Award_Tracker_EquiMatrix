@@ -1,16 +1,16 @@
-<div class="w-64 h-screen bg-[#0B1F3A] text-white flex flex-col p-4">
+<div class="w-64 h-screen bg-[#FAFAFA] text-slate-700 flex flex-col p-4">
 
   <!-- LOGO -->
   <div class="flex items-center gap-3 mb-10">
     <img
-      src="assets/Logo.png"
+      src="assets/NewLogo.png"
       alt="EquiMatrix Logo"
       class="h-14 object-contain"
     />
   </div>
 
   <!-- MENU -->
-  <nav class="flex flex-col gap-6 text-sm">
+  <nav class="flex flex-col gap-3 text-sm">
 
     <!-- DASHBOARD -->
     <a  
@@ -18,16 +18,15 @@
       routerLinkActive="text-[#22C55E]"
       [routerLinkActiveOptions]="{ exact: true }"
       #rlaDashboard="routerLinkActive"
-      class="flex items-center justify-between group"
+      class="flex items-center justify-between px-4 py-2 rounded-xl group"
+      [ngClass]="{
+        'bg-[#D1FADF] text-[#22C55E]': rlaDashboard.isActive,
+        'hover:bg-slate-100 text-slate-600': !rlaDashboard.isActive
+      }"
     >
-      <span class="text-slate-300 group-hover:text-[#14B8A6]">
+      <span class="font-medium">
         Dashboard
       </span>
-
-      <span
-        *ngIf="rlaDashboard.isActive"
-        class="w-1 h-5 bg-[#22C55E] rounded"
-      ></span>
     </a>
 
     <!-- EMPLOYEES -->
@@ -35,16 +34,15 @@
       routerLink="/admin/employees"
       routerLinkActive="text-[#22C55E]"
       #rlaUsers="routerLinkActive"
-      class="flex items-center justify-between group"
+      class="flex items-center justify-between px-4 py-2 rounded-xl group"
+      [ngClass]="{
+        'bg-[#D1FADF] text-[#22C55E]': rlaUsers.isActive,
+        'hover:bg-slate-100 text-slate-600': !rlaUsers.isActive
+      }"
     >
-      <span class="text-slate-300 group-hover:text-[#14B8A6]">
+      <span class="font-medium">
         Employees
       </span>
-
-      <span
-        *ngIf="rlaUsers.isActive"
-        class="w-1 h-5 bg-[#22C55E] rounded"
-      ></span>
     </a>
 
     <!-- AWARDS -->
@@ -52,16 +50,15 @@
       routerLink="/admin/awards"
       routerLinkActive="text-[#22C55E]"
       #rlaAwards="routerLinkActive"
-      class="flex items-center justify-between group"
+      class="flex items-center justify-between px-4 py-2 rounded-xl group"
+      [ngClass]="{
+        'bg-[#D1FADF] text-[#22C55E]': rlaAwards.isActive,
+        'hover:bg-slate-100 text-slate-600': !rlaAwards.isActive
+      }"
     >
-      <span class="text-slate-300 group-hover:text-[#14B8A6]">
+      <span class="font-medium">
         Awards
       </span>
-
-      <span
-        *ngIf="rlaAwards.isActive"
-        class="w-1 h-5 bg-[#22C55E] rounded"
-      ></span>
     </a>
 
     <!-- EXERCISE -->
@@ -69,16 +66,15 @@
       routerLink="/admin/exercise"
       routerLinkActive="text-[#22C55E]"
       #rlaExercise="routerLinkActive"
-      class="flex items-center justify-between group"
+      class="flex items-center justify-between px-4 py-2 rounded-xl group"
+      [ngClass]="{
+        'bg-[#D1FADF] text-[#22C55E]': rlaExercise.isActive,
+        'hover:bg-slate-100 text-slate-600': !rlaExercise.isActive
+      }"
     >
-      <span class="text-slate-300 group-hover:text-[#14B8A6]">
+      <span class="font-medium">
         Exercise Requests
       </span>
-
-      <span
-        *ngIf="rlaExercise.isActive"
-        class="w-1 h-5 bg-[#22C55E] rounded"
-      ></span>
     </a>
 
     <!-- REPORTS -->
@@ -86,16 +82,15 @@
       routerLink="/admin/reports"
       routerLinkActive="text-[#22C55E]"
       #rlaReports="routerLinkActive"
-      class="flex items-center justify-between group"
+      class="flex items-center justify-between px-4 py-2 rounded-xl group"
+      [ngClass]="{
+        'bg-[#D1FADF] text-[#22C55E]': rlaReports.isActive,
+        'hover:bg-slate-100 text-slate-600': !rlaReports.isActive
+      }"
     >
-      <span class="text-slate-300 group-hover:text-[#14B8A6]">
+      <span class="font-medium">
         Reports
       </span>
-
-      <span
-        *ngIf="rlaReports.isActive"
-        class="w-1 h-5 bg-[#22C55E] rounded"
-      ></span>
     </a>
 
     <!-- NOTIFICATIONS -->
@@ -103,16 +98,15 @@
       routerLink="/admin/notifications"
       routerLinkActive="text-[#22C55E]"
       #rlaNotif="routerLinkActive"
-      class="flex items-center justify-between group"
+      class="flex items-center justify-between px-4 py-2 rounded-xl group"
+      [ngClass]="{
+        'bg-[#D1FADF] text-[#22C55E]': rlaNotif.isActive,
+        'hover:bg-slate-100 text-slate-600': !rlaNotif.isActive
+      }"
     >
-      <span class="text-slate-300 group-hover:text-[#14B8A6]">
+      <span class="font-medium">
         Notifications
       </span>
-
-      <span
-        *ngIf="rlaNotif.isActive"
-        class="w-1 h-5 bg-[#22C55E] rounded"
-      ></span>
     </a>
 
   </nav>
