@@ -17,7 +17,7 @@ export class AwardsComponent {
 
   searchText = '';
 
-  // Dummy awards data (UI only)
+  // 🔹 Original Awards Data
   awards = [
     {
       awardId: 'AWD-001',
@@ -39,10 +39,27 @@ export class AwardsComponent {
     }
   ];
 
-  //  Popup state
+  // 🔹 Filtered Awards (table uses this)
+  filteredAwards = [...this.awards];
+
+  // 🔍 Search only by Employee ID
+  onSearch() {
+    const term = this.searchText.toLowerCase().trim();
+
+    if (!term) {
+      this.filteredAwards = [...this.awards];
+      return;
+    }
+
+    this.filteredAwards = this.awards.filter(a =>
+      a.employeeId.toLowerCase().includes(term)
+    );
+  }
+
+  // Popup state
   showEditPopup = false;
 
-  //  Edit form data (same fields as Create Grant)
+  // Edit form data
   editGrant = {
     employeeId: '',
     grantType: 'ESOP',
@@ -52,13 +69,11 @@ export class AwardsComponent {
     grantDate: ''
   };
 
-  //  Open edit popup
   openEditPopup(award: any): void {
     this.editGrant = { ...award };
     this.showEditPopup = true;
   }
 
-  //  Close popup
   closeEditPopup(): void {
     this.showEditPopup = false;
   }
