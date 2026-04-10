@@ -3,21 +3,21 @@
   <!-- HEADER -->
   <div class="flex justify-between items-center mb-6">
     <div class="mb-4 -mt-6">
-    <h1 class="text-3xl font-bold mb-2 text-slate-800">
-     Manage employee share exercise requests
-    </h1>
+      <h1 class="text-3xl font-bold mb-2 text-slate-800">
+        Manage employee share exercise requests
+      </h1>
     </div>
   </div>
 
   <!-- SEARCH -->
   <div class="flex items-center gap-4 mb-8">
     <input
-    type="text"
-    [(ngModel)]="searchText"
-    placeholder="Search by Employee ID "
-    class="w-[400px] px-4 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-green-400"
-    (input)="onSearch()"
-  />
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Search by Employee ID "
+      class="w-[400px] px-4 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-green-400"
+      (input)="onSearch()"
+    />
 
     <button 
       (click)="onSearch()"
@@ -36,7 +36,7 @@
 
     <table class="w-full border-collapse">
 
-      <!-- HEAD (LIGHT THEME) -->
+      <!-- HEAD -->
       <thead class="bg-gray-100 text-gray-700 border-b">
         <tr>
           <th class="p-3 text-left font-semibold">Request Id</th>
@@ -56,11 +56,13 @@
           <td class="p-3">{{ request.requestId }}</td>
           <td class="p-3">{{ request.employeeId }}</td>
           <td class="p-3">{{ request.employeeName }}</td>
-          <td class="p-3 ">{{ request.shares }}</td>
+          <td class="p-3">{{ request.shares }}</td>
 
           <td class="p-3 flex justify-center gap-2">
+
+            <!-- UPDATED: open popup -->
             <button 
-              (click)="onAccept(request)"
+              (click)="openPopup(request, 'accept')"
               [disabled]="request.status !== 'pending'"
               class="bg-green-600 text-white px-4 py-2 rounded font-semibold
                      hover:bg-green-700 disabled:opacity-50 transition"
@@ -68,14 +70,16 @@
               Accept
             </button>
 
+            <!-- UPDATED: open popup -->
             <button 
-              (click)="onReject(request)"
+              (click)="openPopup(request, 'reject')"
               [disabled]="request.status !== 'pending'"
               class="bg-red-600 text-white px-4 py-2 rounded font-semibold
                      hover:bg-red-700 disabled:opacity-50 transition"
             >
               Reject
             </button>
+
           </td>
         </tr>
       </tbody>
@@ -83,5 +87,49 @@
     </table>
 
   </div>
+</div>
 
+<!-- ================================================== -->
+<!-- POPUP CONFIRMATION -->
+<!-- ================================================== -->
+
+<div 
+  *ngIf="showPopup"
+  class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
+>
+  <div class="bg-white p-6 rounded-xl shadow-lg w-[350px] text-center">
+
+    <h2 class="text-xl font-semibold mb-4">
+      {{ popupAction === 'accept' ? 'Confirm Accept' : 'Confirm Reject' }}
+    </h2>
+
+    <p class="text-slate-600 mb-6">
+      Are you sure you want to 
+      <span class="font-semibold">
+        {{ popupAction === 'accept' ? 'ACCEPT' : 'REJECT' }}
+      </span>
+      this request?
+    </p>
+
+    <div class="flex justify-center gap-4">
+      <button 
+        (click)="closePopup()"
+        class="px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-100"
+      >
+        Cancel
+      </button>
+
+      <button 
+        (click)="confirmAction()"
+        class="px-5 py-2 text-white rounded-lg"
+        [ngClass]="{
+          'bg-green-600 hover:bg-green-700': popupAction === 'accept',
+          'bg-red-600 hover:bg-red-700': popupAction === 'reject'
+        }"
+      >
+        YES
+      </button>
+    </div>
+
+  </div>
 </div>
