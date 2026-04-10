@@ -20,7 +20,7 @@ export class AwardsComponent {
   // ✅ Dummy awards data (UI only)
   awards = [
     {
-      awardId: 1,
+      awardId: 'AWD-001',
       employeeId: 'EMP001',
       grantType: 'ESOP',
       numberOfShares: 1000,
@@ -29,7 +29,7 @@ export class AwardsComponent {
       grantDate: '2024-01-15'
     },
     {
-      awardId: 2,
+      awardId: 'AWD-002',
       employeeId: 'EMP002',
       grantType: 'RSU',
       numberOfShares: 500,
