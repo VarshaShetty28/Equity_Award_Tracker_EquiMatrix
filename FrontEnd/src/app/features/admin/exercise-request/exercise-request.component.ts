@@ -50,9 +50,20 @@ export class ExerciseRequestComponent {
     }
   ];
 
+  filteredRequests = [...this.exerciseRequests];
+
+  // 🔍 Search only by Employee ID
   onSearch() {
-    // Filter logic can be added here
-    console.log('Searching for:', this.searchText);
+    const term = this.searchText.toLowerCase().trim();
+
+    if (!term) {
+      this.filteredRequests = [...this.exerciseRequests];
+      return;
+    }
+
+    this.filteredRequests = this.exerciseRequests.filter(a =>
+      a.employeeId.toLowerCase().includes(term)
+    );
   }
 
   onAccept(request: any) {

@@ -12,11 +12,12 @@
   <!-- SEARCH -->
   <div class="flex items-center gap-4 mb-8">
     <input
-      type="text"
-      [(ngModel)]="searchText"
-      placeholder="Search"
-      class="flex-1 max-w-md p-3 rounded text-gray-900 shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-    />
+    type="text"
+    [(ngModel)]="searchText"
+    placeholder="Search by Employee ID "
+    class="w-[400px] px-4 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-green-400"
+    (input)="onSearch()"
+  />
 
     <button 
       (click)="onSearch()"
@@ -49,7 +50,7 @@
       <!-- BODY -->
       <tbody>
         <tr
-          *ngFor="let request of exerciseRequests"
+          *ngFor="let request of filteredRequests"
           class="border-b hover:bg-gray-50 transition"
         >
           <td class="p-3">{{ request.requestId }}</td>
