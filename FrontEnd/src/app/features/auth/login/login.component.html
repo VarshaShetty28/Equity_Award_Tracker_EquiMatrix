@@ -2,12 +2,12 @@
 
   <div class="flex w-full">
 
-    <!-- LEFT SIDE (Ambient / Illustration area) -->
+    <!-- LEFT SIDE -->
     <div class="w-1/2 p-14 flex flex-col justify-center items-center text-center
-            bg-gradient-to-br from-[#EDF8F3] to-[#F3FBF8]">
+                bg-gradient-to-br from-[#EDF8F3] to-[#F3FBF8]">
 
       <h2 class="text-4xl font-semibold text-slate-800 mb-8">
-        Welcome to EquiMatrix
+        Welcome to EquiMatrixa
       </h2>
 
       <p class="text-slate-600 text-lg leading-relaxed max-w-lg">
@@ -17,14 +17,14 @@
       </p>
     </div>
 
-    <!-- RIGHT SIDE (Login – clean, open, full-page feel) -->
+    <!-- RIGHT SIDE (LOGIN) -->
     <div class="w-1/2 px-20 flex flex-col justify-center bg-white">
 
       <!-- LOGO -->
       <div class="mb-10 absolute top-6 left-8">
         <img src="assets/NewLogo.png"
-     alt="EquiMatrix Logo"
-     class="h-10 w-auto" />
+        alt="EquiMatrix Logo"
+        class="h-10 w-auto" />
       </div>
 
       <h2 class="text-2xl font-semibold mb-8 text-slate-800">
@@ -32,6 +32,31 @@
       </h2>
 
       <form (ngSubmit)="onLogin()" class="space-y-6 max-w-md">
+
+        <!-- TOGGLE SWITCH (BEST UI) -->
+        <div class="flex bg-slate-100 rounded-lg p-1 w-max mb-6 shadow-sm">
+          <button
+            type="button"
+            (click)="selectedRole = 'EMPLOYEE'"
+            [ngClass]="selectedRole === 'EMPLOYEE'
+              ? 'bg-white text-[#169873] shadow font-semibold'
+              : 'text-slate-500'"
+            class="px-6 py-2 rounded-md transition"
+          >
+            Employee
+          </button>
+
+          <button
+            type="button"
+            (click)="selectedRole = 'ADMIN'"
+            [ngClass]="selectedRole === 'ADMIN'
+              ? 'bg-white text-[#169873] shadow font-semibold'
+              : 'text-slate-500'"
+            class="px-6 py-2 rounded-md transition"
+          >
+            Admin
+          </button>
+        </div>
 
         <!-- Email -->
         <div>
@@ -59,11 +84,11 @@
             required>
         </div>
 
-        <!-- Remember -->
+        <!-- Remember + Forgot -->
         <div class="flex justify-between items-center text-sm">
           <label class="flex items-center text-slate-600">
             <input type="checkbox"
-                   class="mr-2 rounded border-slate-300 text-[#5B6CFF] focus:ring-[#5B6CFF]">
+                  class="mr-2 rounded border-slate-300 text-[#5B6CFF] focus:ring-[#5B6CFF]">
             Remember me
           </label>
 
@@ -73,11 +98,11 @@
         </div>
 
         <!-- Button -->
-       <button
-        class="w-full bg-[#169873] hover:bg-[#12865f]
-              text-white py-2.5 rounded-lg font-semibold transition">
-        Login
-      </button>
+        <button
+          class="w-full bg-[#169873] hover:bg-[#12865f]
+                text-white py-2.5 rounded-lg font-semibold transition">
+          Login as {{ selectedRole || '...' }}
+        </button>
 
       </form>
 
