@@ -11,4 +11,6 @@ import { RouterModule } from '@angular/router';
   ],
   templateUrl: './employee-nav-bar.component.html'
 })
-export class EmployeeNavBarComponent {}
+export class EmployeeNavBarComponent {
+  employeeName = 'Aarav Sharma';
+}
