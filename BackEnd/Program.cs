@@ -1,0 +1,30 @@
+// var builder = WebApplication.CreateBuilder(args);
+
+// // enable MVC controllers
+// builder.Services.AddControllers();
+
+// var app = builder.Build();
+
+// app.MapControllers(); // enable controller endpoints
+// app.UseHttpsRedirection();
+
+// app.Run();
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+app.UseHttpsRedirection();
+app.MapControllers();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.Run();
